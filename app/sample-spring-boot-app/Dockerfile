@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # Copy jar from build context
-COPY target/sample-spring-boot-app-0.0.1-SNAPSHOT.jar app.jar
+COPY ./target/sample-spring-boot-app-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose application port
 EXPOSE 8080
