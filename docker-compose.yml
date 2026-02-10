@@ -1,8 +1,7 @@
-version: "3.8"
-
 services:
   zookeeper:
-    image: bitnami/zookeeper:3.9
+    image: bitnami/zookeeper:3.8
+    container_name: zookeeper
     environment:
       ALLOW_ANONYMOUS_LOGIN: "yes"
     ports:
@@ -10,6 +9,7 @@ services:
 
   kafka:
     image: bitnami/kafka:3.6
+    container_name: kafka
     depends_on:
       - zookeeper
     ports:
@@ -22,16 +22,20 @@ services:
 
   mysql:
     image: mysql:8.0
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: appdb
       MYSQL_USER: appuser
       MYSQL_PASSWORD: apppass
+    ports:
+      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
 
   app:
     image: bhagyesh1/springboot-app:1.0
+    container_name: springboot-app
     depends_on:
       - mysql
       - kafka
