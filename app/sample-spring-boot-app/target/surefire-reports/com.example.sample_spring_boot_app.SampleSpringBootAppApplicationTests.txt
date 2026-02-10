@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.sample_spring_boot_app.SampleSpringBootAppApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.318 s -- in com.example.sample_spring_boot_app.SampleSpringBootAppApplicationTests
