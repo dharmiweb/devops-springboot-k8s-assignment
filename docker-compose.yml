@@ -15,7 +15,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   app:
-    image: springboot-app:1.4
+    image: bhagyesh1/springboot-app:1.0
     container_name: springboot-app
     depends_on:
       - mysql
