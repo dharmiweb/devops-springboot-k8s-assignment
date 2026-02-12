@@ -37,7 +37,11 @@ jobs:
       # 🔥 Docker build from repo root (Dockerfile is there)
       - name: Build Docker Image
         run: |
-          docker build -t $IMAGE_NAME:${{ github.sha }} .
+          docker build \
+            -t $IMAGE_NAME:${{ github.sha }} \
+            -t $IMAGE_NAME:latest \
+            -f app/sample-spring-boot-app/Dockerfile \
+            app/sample-spring-boot-app
           docker tag $IMAGE_NAME:${{ github.sha }} $IMAGE_NAME:latest
 
       - name: Push Docker Image
