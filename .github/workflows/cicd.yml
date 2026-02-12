@@ -48,16 +48,3 @@ jobs:
         run: |
           docker push $IMAGE_NAME:${{ github.sha }}
           docker push $IMAGE_NAME:latest
-
-      - name: Setup kubectl
-        uses: azure/setup-kubectl@v4
-
-      - name: Configure Kubeconfig
-        run: |
-          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > kubeconfig
-          export KUBECONFIG=$PWD/kubeconfig
-
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl set image deployment/springboot-app \
-          app=$IMAGE_NAME:${{ github.sha }} -n dev
